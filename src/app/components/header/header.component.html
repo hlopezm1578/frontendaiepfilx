@@ -1,0 +1,13 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid d-flex">
+      <div style="" *ngIf="usuarioLogueado" >
+        <p class="text-white" >{{nombreUsuario}} : {{rolUsuario}}</p> 
+      </div>
+      <div style="margin-left: auto;" *ngIf="!usuarioLogueado" >
+        <a class="text-white" routerLink="/login" >Ingresar</a> | <a class="text-white" routerLink="/register">Registrarse</a>
+      </div>
+      <div style="margin-left: auto;" *ngIf="usuarioLogueado" >
+        <a class="text-white" routerLink="" (click)="logout()" >Salir</a>
+      </div>
+    </div>
+  </nav>

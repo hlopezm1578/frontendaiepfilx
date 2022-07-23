@@ -1,0 +1,64 @@
+<div style="min-width:83vw ;">
+    <app-header></app-header>
+    <div class="card col-md-5 mt-3" style="margin-left:auto ; margin-right: auto;">
+        <div class="card-header  bg-primary text-white text-center">
+            <h3>Registro</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="registerForm">
+                <div class="form-group">
+                    <input
+                        formControlName="name"
+                        autocomplete="on" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Nombre">
+                        <span *ngIf="name?.invalid && (name?.dirty || name?.touched) && name?.errors?.['required'] " class="text-danger">
+                            El campo nombre es requerido
+                        </span>
+                </div>
+                <div class="form-group mt-3">
+                    <input
+                        formControlName="email"
+                        autocomplete="on" 
+                        type="email" 
+                        class="form-control" 
+                        placeholder="Email">
+                        <span *ngIf="email?.invalid && (email?.dirty || email?.touched) && email?.errors?.['required'] " class="text-danger">
+                            El campo email es requerido
+                        </span>
+                        <span *ngIf="email?.invalid && (email?.dirty || email?.touched) && email?.errors?.['email'] " class="text-danger">
+                            El formato del email no es valido
+                        </span>
+                </div>
+
+                <div class="form-group mt-3">
+                    <input 
+                        formControlName="password"
+                        type="password" 
+                        class="form-control" 
+                        placeholder="Password"
+                        >
+                        <span *ngIf="password?.invalid && (password?.dirty || password?.touched) " class="text-danger">
+                            El campo password es requerido
+                        </span>
+                </div>
+                <div>
+                    <button 
+                    [disabled]="registerForm.invalid"
+                    (click)="submitForm()" 
+                    class="btn btn-primary mt-3">
+                    Guardar
+                </button>
+                </div>
+               
+                <span *ngIf="error" class="text-danger">
+                    {{errorMsj}}
+                </span>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,52 @@
+<div style="min-width:83vw ;">
+    <app-header></app-header>
+    <div class="card col-md-5 mt-3" style="margin-left:auto ; margin-right: auto;">
+        <div class="card-header  bg-primary text-white text-center">
+            <h3>Crear Pelicula</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="nuevaPeliculaForm">
+                <div class="form-group">
+                    <input
+                        formControlName="name"
+                        autocomplete="on" 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Nombre de la peli">
+                        <span *ngIf="name?.invalid && (name?.dirty || name?.touched) " class="text-danger">
+                            El campo Nombre es requerido
+                        </span> 
+                </div>
+                <div class="form-group mt-3">
+                    <input
+                        formControlName="poster"
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Url imagen de la peli">
+                        <span *ngIf="poster?.invalid && (poster?.dirty || poster?.touched) " class="text-danger">
+                            El campo Imagen es requerido
+                        </span> 
+                </div>
+                <div class="form-group mt-3">
+                    <input
+                        formControlName="year"
+                        type="number" 
+                        class="form-control" 
+                        placeholder="El Año de la peli">
+                        <span *ngIf="year?.invalid && (year?.dirty || year?.touched) " class="text-danger">
+                            El campo Año es requerido
+                        </span> 
+                </div>
+                <div>
+                    <button 
+                    [disabled]="nuevaPeliculaForm.invalid"
+                    (click)="submitForm()" 
+                    class="btn btn-primary mt-3">
+                    Guardar
+                </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
